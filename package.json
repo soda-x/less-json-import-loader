@@ -1,0 +1,59 @@
+{
+  "name": "less-json-import-loader",
+  "version": "0.1.0",
+  "description": "load variable from json sources to Less files Edit",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel src --out-dir lib --ignore /__tests__/",
+    "pretest": "eslint --ignore-path .gitignore src",
+    "test": "nyc --reporter=lcov --reporter=text ava",
+    "ci": "nyc report --reporter=text-lcov | coveralls",
+    "prepublish": "npm run test && npm run build && npm run publish"
+  },
+  "ava": {
+    "files": [
+      "src/__tests__/**/*.js"
+    ],
+    "concurrency": 5,
+    "require": "babel-register"
+  },
+  "nyc": {
+    "exclude": [
+      "node_modules",
+      "**/__tests__",
+      "**/lib"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pigcan/less-json-import-loader.git"
+  },
+  "keywords": [
+    "webpack-loader",
+    "less",
+    "json",
+    "import"
+  ],
+  "author": " <pigcan>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pigcan/less-json-import-loader/issues"
+  },
+  "homepage": "https://github.com/pigcan/less-json-import-loader#readme",
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
+    "coveralls": "^2.13.1",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "nyc": "^11.1.0"
+  },
+  "files": [
+    "lib/"
+  ]
+}
