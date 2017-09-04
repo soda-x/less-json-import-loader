@@ -1,6 +1,7 @@
 {
   "plugins": [ "add-module-exports" ],
   "presets": [
+    "stage-0",
     [
       "env",
       {

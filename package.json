@@ -4,18 +4,18 @@
   "description": "load variable from json sources to Less files Edit",
   "main": "lib/index.js",
   "scripts": {
-    "build": "babel src --out-dir lib --ignore /__tests__/",
-    "pretest": "eslint --ignore-path .gitignore src",
+    "build": "npm run lint && babel src --out-dir lib --ignore /__tests__/",
+    "lint": "eslint --ignore-path .gitignore src",
     "test": "nyc --reporter=lcov --reporter=text ava",
-    "ci": "nyc report --reporter=text-lcov | coveralls",
-    "prepublish": "npm run test && npm run build && npm run publish"
+    "ci": "nyc report --reporter=text-lcov | coveralls"
   },
   "ava": {
     "files": [
       "src/__tests__/**/*.js"
     ],
     "concurrency": 5,
-    "require": "babel-register"
+    "require": "babel-register",
+    "babel": "inherit"
   },
   "nyc": {
     "exclude": [
@@ -46,6 +46,7 @@
     "babel-eslint": "^7.2.3",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "coveralls": "^2.13.1",
     "eslint": "^4.5.0",
@@ -57,6 +58,8 @@
     "lib/"
   ],
   "dependencies": {
-    "loader-utils": "^1.1.0"
+    "loader-utils": "^1.1.0",
+    "md5": "^2.2.1",
+    "schema-utils": "^0.3.0"
   }
 }
