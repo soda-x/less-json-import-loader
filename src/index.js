@@ -10,7 +10,7 @@ export default function jsonImportLoader(content) {
 
   const options = loaderUtils.getOptions(this) || {};
 
-  validateOptions(require('./options'), options, 'JSON Import Loader'); //eslint-disable-line
+  validateOptions(require('../options'), options, 'JSON Import Loader'); //eslint-disable-line
 
   const prefix = options.prefix || 'json-import';
   const importMatcher = new RegExp(`^\\s*@${prefix} "(.*?)";(.*)`);
