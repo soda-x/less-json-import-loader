@@ -8,7 +8,7 @@
       src="https://webpack.js.org/assets/icon-square-big.svg">
   </a>
   <h1>less json import loader</h1>
-  <p>load variable from json sources to Less files</p>
+  <p>load less variables or css variables from json sources to Less files</p>
 </div>
 
 

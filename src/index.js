@@ -7,12 +7,27 @@ import md5 from 'md5';
 
 export default function jsonImportLoader(content) {
   if (this.cacheable) this.cacheable();
+  const defaultOpts = {
+    prefix: 'json-import',
+    cssVariable: true,
+    lessVariable: true,
+    hash: false,
+  }
 
-  const options = loaderUtils.getOptions(this) || {};
-
+  let options = loaderUtils.getOptions(this) || {};
+  options = {
+    ...defaultOpts,
+    ...options,
+  };
   validateOptions(require('../options'), options, 'JSON Import Loader'); //eslint-disable-line
 
-  const prefix = options.prefix || 'json-import';
+  const prefix = options.prefix;
+  const cssVariable = options.cssVariable;
+  const lessVariable = options.lessVariable;
+  const hash = options.hash;
+  if (!(cssVariable || lessVariable)) {
+    return content;
+  }
   const importMatcher = new RegExp(`^\\s*@${prefix} "(.*?)";(.*)`);
 
   const contents = content.split('\n');
@@ -36,25 +51,51 @@ export default function jsonImportLoader(content) {
       }
 
       const lessContent = [];
-      (function exploreJson(currentLevel, path, hash) {
+      const cssContent = [];
+      (function exploreJson(currentLevel, path, hashString) {
         for (const key in currentLevel) { //eslint-disable-line
           switch (typeof currentLevel[key]) {
             case 'object':
-              exploreJson(currentLevel[key], path.concat(key), hash);
+              exploreJson(currentLevel[key], path.concat(key), hashString);
               break;
             default:
-              lessContent.push('@');
-              lessContent.push(path.concat(key).join('-'), '-', hash);
-              lessContent.push(': ');
-              lessContent.push(currentLevel[key]);
-              lessContent.push(';\n');
+              if (lessVariable) {
+                lessContent.push('@');
+                if (hash) {
+                  lessContent.push(path.concat(key).join('-'), '-', hashString);
+                } else {
+                  lessContent.push(path.concat(key).join('-'));
+                }               
+                lessContent.push(': ');
+                lessContent.push(currentLevel[key]);
+                lessContent.push(';\n');
+              }
+              if (cssVariable) {
+                cssContent.push('  --');
+                if (hash) {
+                  cssContent.push(path.concat(key).join('-'), '-', hashString);
+                } else {
+                  cssContent.push(path.concat(key).join('-'));
+                }
+                cssContent.push(': ');
+                cssContent.push(currentLevel[key]);
+                cssContent.push(';\n'); 
+              }
           }
         }
       }(jsonContent, [], md5(jsonPath)));
-      if (match[2]) {
-        lessContent.push(match[2]);
+
+      if (lessVariable) {
+        newContent[i] = lessContent.join('');
       }
-      newContent[i] = lessContent.join('');
+      if (cssVariable) {
+        const cssVariableString = `:root {\n${cssContent.join('')}}\n`;
+        newContent[i] = newContent[i] ? `${newContent[i]}${cssVariableString}` : cssVariableString;
+      }
+      if (match[2]) {
+        newContent[i] = newContent[i] ? `${newContent[i]}${match[2]}` : '';
+      }
+      
     } else {
       newContent[i] = contents[i];
     }

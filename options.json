@@ -3,6 +3,15 @@
   "properties": {
     "prefix": {
       "type": "string"
+    },
+    "lessVariable": {
+      "type": "boolean"
+    },
+    "cssVariable": {
+      "type": "boolean"
+    },
+    "hash": {
+      "type": "boolean"
     }
   }
 }
