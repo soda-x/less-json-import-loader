@@ -18,6 +18,16 @@
 npm install --save-dev less-json-import-loader
 ```
 
+<h2 align="center">Options</h2>
+
+- `prefix`: `string`, defualt `json-import`
+
+- `lessVariable`: `boolean`, defualt `true`
+
+- `cssVariable`: `boolean`, defualt `true`
+
+- `hash`: `boolean`, defualt `false`
+
 <h2 align="center">Usage</h2>
 
 ```js
@@ -50,6 +60,9 @@ after
 
 ```less
 @a-md5: 1;
+:root {
+  --a-md5: 1;
+}
 background: #222;
 ```
 
