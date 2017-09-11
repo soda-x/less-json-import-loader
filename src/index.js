@@ -12,7 +12,7 @@ export default function jsonImportLoader(content) {
     cssVariable: true,
     lessVariable: true,
     hash: false,
-  }
+  };
 
   let options = loaderUtils.getOptions(this) || {};
   options = {
@@ -65,7 +65,7 @@ export default function jsonImportLoader(content) {
                   lessContent.push(path.concat(key).join('-'), '-', hashString);
                 } else {
                   lessContent.push(path.concat(key).join('-'));
-                }               
+                }
                 lessContent.push(': ');
                 lessContent.push(currentLevel[key]);
                 lessContent.push(';\n');
@@ -79,7 +79,7 @@ export default function jsonImportLoader(content) {
                 }
                 cssContent.push(': ');
                 cssContent.push(currentLevel[key]);
-                cssContent.push(';\n'); 
+                cssContent.push(';\n');
               }
           }
         }
@@ -95,7 +95,6 @@ export default function jsonImportLoader(content) {
       if (match[2]) {
         newContent[i] = newContent[i] ? `${newContent[i]}${match[2]}` : '';
       }
-      
     } else {
       newContent[i] = contents[i];
     }

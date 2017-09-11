@@ -8,24 +8,24 @@ import jsonImportLoader from '../index';
 const fixturesPath = join(__dirname, 'fixtures');
 
 const run = function run(resourcePath, prefix, lessVariable, cssVariable, hash, content) {
-  let queryString = [ '?' ];
+  const queryString = ['?'];
   if (prefix) {
     queryString.push(`prefix=${prefix}`);
   }
   if (lessVariable) {
-    queryString.push(`+lessVariable`);
+    queryString.push('+lessVariable');
   } else {
-    queryString.push(`-lessVariable`);
+    queryString.push('-lessVariable');
   }
   if (cssVariable) {
-    queryString.push(`+cssVariable`);
+    queryString.push('+cssVariable');
   } else {
-    queryString.push(`-cssVariable`);
+    queryString.push('-cssVariable');
   }
   if (hash) {
-    queryString.push(`+hash`);
+    queryString.push('+hash');
   } else {
-    queryString.push(`-hash`);
+    queryString.push('-hash');
   }
   const context = {
     query: queryString.join(','),
@@ -40,35 +40,30 @@ const run = function run(resourcePath, prefix, lessVariable, cssVariable, hash, 
 };
 
 test('run without options', (t) => {
-  const jsonPath = join(fixturesPath, 'test.json');
   const { result } = run(join(fixturesPath, 'test.less'), false, true, true, false, '@json-import "test.json";background:#fff;'); // eslint-disable-line
   const expect =  `@a: a1;\n@b: b1;\n@c-c1: c1-1;\n:root {\n  --a: a1;\n  --b: b1;\n  --c-c1: c1-1;\n}\nbackground:#fff;`; // eslint-disable-line
   t.deepEqual(result, expect);
 });
 
 test('run with options all false', (t) => {
-  const jsonPath = join(fixturesPath, 'test.json');
   const { result } = run(join(fixturesPath, 'test.less'), false, false, false, false, '@json-import "test.json";background:#fff;'); // eslint-disable-line
   const expect =  '@json-import "test.json";background:#fff;'; // eslint-disable-line
   t.deepEqual(result, expect);
 });
 
 test('run with options prefix is customPrefix', (t) => {
-  const jsonPath = join(fixturesPath, 'test.json');
   const { result } = run(join(fixturesPath, 'test.less'), 'customPrefix', true, true, false, '@customPrefix "test.json";background:#fff;'); // eslint-disable-line
   const expect =  `@a: a1;\n@b: b1;\n@c-c1: c1-1;\n:root {\n  --a: a1;\n  --b: b1;\n  --c-c1: c1-1;\n}\nbackground:#fff;`; // eslint-disable-line
   t.deepEqual(result, expect);
 });
 
 test('run with options cssVariable false', (t) => {
-  const jsonPath = join(fixturesPath, 'test.json');
   const { result } = run(join(fixturesPath, 'test.less'), 'customPrefix', true, false, false, '@customPrefix "test.json";background:#fff;'); // eslint-disable-line
   const expect =  `@a: a1;\n@b: b1;\n@c-c1: c1-1;\nbackground:#fff;`; // eslint-disable-line
   t.deepEqual(result, expect);
 });
 
 test('run with options lessVariable false', (t) => {
-  const jsonPath = join(fixturesPath, 'test.json');
   const { result } = run(join(fixturesPath, 'test.less'), 'customPrefix', false, true, false, '@customPrefix "test.json";background:#fff;'); // eslint-disable-line
   const expect =  `:root {\n  --a: a1;\n  --b: b1;\n  --c-c1: c1-1;\n}\nbackground:#fff;`; // eslint-disable-line
   t.deepEqual(result, expect);
