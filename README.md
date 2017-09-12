@@ -1,6 +1,6 @@
 
+[![NPM version](https://img.shields.io/npm/v/less-json-import-loader.svg?style=flat)](https://npmjs.org/package/less-json-import-loader) [![Build Status](https://travis-ci.org/pigcan/less-json-import-loader.svg?branch=master)](https://travis-ci.org/pigcan/less-json-import-loader) [![Build status](https://ci.appveyor.com/api/projects/status/sk8hs3985idxm721/branch/master?svg=true)](https://ci.appveyor.com/project/pigcan/less-json-import-loader/branch/master) [![Coverage Status](https://coveralls.io/repos/github/pigcan/less-json-import-loader/badge.svg?branch=master)](https://coveralls.io/github/pigcan/less-json-import-loader?branch=master) [![Dependency Status](https://david-dm.org/pigcan/less-json-import-loader.svg)](https://david-dm.org/pigcan/less-json-import-loader)
 
-[![Build Status](https://travis-ci.org/pigcan/less-json-import-loader.svg?branch=master)](https://travis-ci.org/pigcan/less-json-import-loader) [![Build status](https://ci.appveyor.com/api/projects/status/sk8hs3985idxm721/branch/master?svg=true)](https://ci.appveyor.com/project/pigcan/less-json-import-loader/branch/master) [![Coverage Status](https://coveralls.io/repos/github/pigcan/less-json-import-loader/badge.svg?branch=master)](https://coveralls.io/github/pigcan/less-json-import-loader?branch=master)
 
 <div align="center">
   <a href="https://github.com/webpack/webpack">
