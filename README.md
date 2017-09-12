@@ -67,3 +67,6 @@ background: #222;
 ```
 
 `md5`: it is the value of md5('path/to/test.json')
+
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/pigcan/less-json-import-loader.svg)](https://greenkeeper.io/)
