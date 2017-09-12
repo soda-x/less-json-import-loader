@@ -1,5 +1,5 @@
 
-[![NPM version](https://img.shields.io/npm/v/less-json-import-loader.svg?style=flat)](https://npmjs.org/package/less-json-import-loader) [![Build Status](https://travis-ci.org/pigcan/less-json-import-loader.svg?branch=master)](https://travis-ci.org/pigcan/less-json-import-loader) [![Build status](https://ci.appveyor.com/api/projects/status/sk8hs3985idxm721/branch/master?svg=true)](https://ci.appveyor.com/project/pigcan/less-json-import-loader/branch/master) [![Coverage Status](https://coveralls.io/repos/github/pigcan/less-json-import-loader/badge.svg?branch=master)](https://coveralls.io/github/pigcan/less-json-import-loader?branch=master) [![Dependency Status](https://david-dm.org/pigcan/less-json-import-loader.svg)](https://david-dm.org/pigcan/less-json-import-loader)
+[![NPM version](https://img.shields.io/npm/v/less-json-import-loader.svg?style=flat)](https://npmjs.org/package/less-json-import-loader) [![Build Status](https://travis-ci.org/pigcan/less-json-import-loader.svg?branch=master)](https://travis-ci.org/pigcan/less-json-import-loader) [![Build status](https://ci.appveyor.com/api/projects/status/sk8hs3985idxm721/branch/master?svg=true)](https://ci.appveyor.com/project/pigcan/less-json-import-loader/branch/master) [![Coverage Status](https://coveralls.io/repos/github/pigcan/less-json-import-loader/badge.svg?branch=master)](https://coveralls.io/github/pigcan/less-json-import-loader?branch=master) [![Dependency Status](https://david-dm.org/pigcan/less-json-import-loader.svg)](https://david-dm.org/pigcan/less-json-import-loader) [![Greenkeeper badge](https://badges.greenkeeper.io/pigcan/less-json-import-loader.svg)](https://greenkeeper.io/)
 
 
 <div align="center">
@@ -67,6 +67,3 @@ background: #222;
 ```
 
 `md5`: it is the value of md5('path/to/test.json')
-
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/pigcan/less-json-import-loader.svg)](https://greenkeeper.io/)
