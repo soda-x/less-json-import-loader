@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/pigcan/less-json-import-loader#readme",
   "devDependencies": {
-    "ava": "^0.25.0",
+    "ava": "^1.0.1",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
